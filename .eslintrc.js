@@ -30,5 +30,6 @@ module.exports = {
     'require-jsdoc': 0,
     'no-unused-vars': 'warn',
     'import/no-unresolved': 0,
+    'linebreak-style': 0,
   },
 };
