@@ -41,7 +41,7 @@ app.post('/', (req, res) => {
             if (parts[i]['name'] === 'description') {
               description = parts[i].data.toString();
             }
-            if (parts[i]['name'] === 'np_addresss') {
+            if (parts[i]['name'] === 'np_address') {
               npAddress = parts[i].data.toString();
             }
     }
