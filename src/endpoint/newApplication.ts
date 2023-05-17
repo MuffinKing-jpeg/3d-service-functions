@@ -12,10 +12,13 @@ import {updateOrCreate} from '../crm/updateOrCreate';
 import {errorResponse} from '../utility/errorResponse';
 import {createOpportunity} from '../crm/createOpportunity';
 
+const isDev = process.env['DEVELOPMENT'] ? true : false
+
 const app = express();
 app.post('/', (req, res) => {
   const response = (config: ResponseConfigInterface) => {
     res
+        .setHeader('Access-Control-Allow-Origin', isDev ? '*' : '*.printspeed-3d.web.app')
         .status(config.status)
         .send({
           status: config.status,
