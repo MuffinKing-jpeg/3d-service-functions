@@ -6,5 +6,5 @@ export const CRM_CONFIG = {
   ACCOUNTS_PATH: '/Accounts',
   OPPORTUNITIES_PATH: '/Opportunities',
   MODULE_PATH: '/module',
-  SEARCH_PARAMS: ['telegram_c', 'phone_alternate', 'phone_office'],
+  SEARCH_PARAMS: ['telegram_c', 'phone_alternate', 'phone_office', 'name'],
 };
