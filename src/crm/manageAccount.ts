@@ -22,9 +22,9 @@ export const manageAccount = (
 
     const accountInfo = buildPayload(fields, 'Account', id);
     if (
-      !accountInfo.data.attributes['name'] && method === 'post'
+      !accountInfo['data'].attributes['name'] && method === 'post'
     ) {
-      accountInfo.data.attributes['name'] = namesRandomizer(3);
+      accountInfo['data'].attributes['name'] = namesRandomizer(3);
     }
 
     axios({

@@ -21,9 +21,9 @@ export const createAccount = (
 
     const accountInfo = buildPayload(fields, 'Account', id);
     if (
-      !accountInfo.data.attributes['name']
+      !accountInfo['data'].attributes['name']
     ) {
-      accountInfo.data.attributes['name'] = namesRandomizer(3);
+      accountInfo['data'].attributes['name'] = namesRandomizer(3);
     }
 
     axios({

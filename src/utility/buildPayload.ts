@@ -19,7 +19,7 @@ export const buildPayload = (
       .getOwnPropertyNames(fields)
       .forEach((key) => {
         if (CRM_CONFIG.SEARCH_PARAMS.includes(key)) {
-          accountInfo.data.attributes[key] = fields[key];
+          accountInfo['data'].attributes[key] = fields[key];
         }
       });
   return accountInfo;
