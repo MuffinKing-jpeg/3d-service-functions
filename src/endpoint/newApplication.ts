@@ -12,13 +12,17 @@ import {updateOrCreate} from '../crm/updateOrCreate';
 import {errorResponse} from '../utility/errorResponse';
 import {createOpportunity} from '../crm/createOpportunity';
 
-const isDev = process.env['DEVELOPMENT'] ? true : false
+const isDev = !!process.env['DEVELOPMENT'];
 
 const app = express();
 app.post('/', (req, res) => {
   const response = (config: ResponseConfigInterface) => {
     res
-        .setHeader('Access-Control-Allow-Origin', isDev ? '*' : '*.printspeed-3d.web.app')
+        .setHeader(
+            'Access-Control-Allow-Origin', isDev ?
+          '*' :
+          '*.printspeed-3d.web.app'
+        )
         .status(config.status)
         .send({
           status: config.status,
@@ -26,7 +30,6 @@ app.post('/', (req, res) => {
           message: config.msg,
         });
   };
-
 
   const ID = randomUUID();
   if (req.headers['content-type']) {
@@ -38,15 +41,15 @@ app.post('/', (req, res) => {
     let description!: string;
     let npAddress!: string;
     for (let i = 0; i < parts.length; i++) {
-            parts[i]['filename'] || parts[i]['type'] ?
-                files.push(parts[i]) :
-                fields.push(parts[i]);
-            if (parts[i]['name'] === 'description') {
-              description = parts[i].data.toString();
-            }
-            if (parts[i]['name'] === 'np_address') {
-              npAddress = parts[i].data.toString();
-            }
+      parts[i]['filename'] || parts[i]['type'] ?
+        files.push(parts[i]) :
+        fields.push(parts[i]);
+      if (parts[i]['name'] === 'description') {
+        description = parts[i].data.toString();
+      }
+      if (parts[i]['name'] === 'np_address') {
+        npAddress = parts[i].data.toString();
+      }
     }
 
     crmAuth
@@ -84,4 +87,3 @@ app.post('/', (req, res) => {
 });
 
 export const newApplication = https.onRequest(app);
-
