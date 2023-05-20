@@ -1,6 +1,6 @@
-import {config as envConf} from 'dotenv';
+import {config} from 'dotenv';
 
-envConf();
+config();
 
 
 export {authDebug} from './endpoint/authDebug';
